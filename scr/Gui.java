@@ -9,51 +9,44 @@ class Gui extends JFrame implements ActionListener{
 
     JPanel p;
 	int mx,my;
-	MYJPanel p2, p3;
+	MYJPanel mp2, mp3;
 	Timer tm;
 	int count=0;
 	JButton jbn, jbw, jbs, jbe;
 	JButton[] lbl;
-	int x1,y1,x2,y2;
+	MyPoint p1 ,p2, p3;
 
-	public Gui(String img, int n1, int n2, int n3, int n4) {
+	public Gui(){
+
+		//read from file
+			
+		p1 = new MyPoint(150,150);
+		p2 = new MyPoint(300,300);
+		p3 = new MyPoint(0,0);
+
+		mp2 = new MYJPanel();
 		
-		x1 = n1;
-		y1 = n2;
-		x2 = n3;
-		y2 = n4;
+		mp2.setPts(p1,p2,p3);
 
-        p2 = new MYJPanel();
-		p2.setLnPts(n1,n2,n3,n4);
-
+		mp2.setSize(1040,551);
 		
-		try {
-			p2.img = ImageIO.read(new File("./"+img));
-		} catch (IOException e) {
-			System.out.printf("img open failed\n");
-			e.printStackTrace();
-			System.exit(1);
-		}
-
-        p2.setSize(p2.img.getWidth(), p2.img.getHeight());
-
-		//p2.setSize(1040,551);
-		this.add(p2);
+		this.add(mp2);
 		
-
 		tm = new Timer(100,this);
 		tm.setActionCommand("tm");
+
 		tm.start();
 	}
-
-	int test = 0;
 
 	public void actionPerformed(ActionEvent e){
 		if (e.getActionCommand().compareTo("tm")==0){
 			//p2 = new MYJPanel();
-			p2.repaint();
-			p2.setLnPts(x1+test,y1-test,x2-test,y2+test);
-			test+=10;
+			mp2.repaint();
+			p1.x+=10;
+			p1.y-=10;
+			p2.x-=10;
+			p2.y+=10;
+			mp2.setPts(p1,p2,p3);
 		}
 	}
 

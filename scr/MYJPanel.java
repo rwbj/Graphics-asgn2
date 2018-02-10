@@ -36,39 +36,35 @@ import java.lang.Math;
 
 public class MYJPanel extends JPanel{
 
-    Graphics2D g2d;
-	BufferedImage img=null;
-	int x1,x2,y1,y2;
-	
+	Graphics2D g2d;
+	MyPoint p1;
+	MyPoint p2;
+	MyPoint p3;
 
 	public MYJPanel() {
 
 		super();
 	}
 
-	public void setLnPts(int n1, int n2, int n3, int n4){
-		x1 = n1;
-		y1 = n2;
-		x2 = n3;
-		y2 = n4;
+	public void setPts(MyPoint mp1, MyPoint mp2, MyPoint mp3){
+		p1=mp1;
+		p2=mp2;
+		p3=mp3;
 	}
 
 	public synchronized void paintComponent(Graphics g) {
 
-		int i,j,w,h;
-
 		g2d = (Graphics2D) g;
 
-		w = img.getWidth();
-		h = img.getHeight();
+		g2d.setBackground(Color.CYAN);
 
 		g2d.setColor(Color.BLACK);
+		
+		//g2d.drawLine(x1, y1, x2, y2);
 
-		//g2d = img.createGraphics();
-		
-		g2d.drawImage(img, null, 0, 0);
-		
-		g2d.drawLine(x1, y1, x2, y2);
+		g2d.drawLine(p1.x,p1.y,p2.x,p2.y);
+
+		System.out.printf("points: %d %d, %d %d\n",p1.x,p1.y,p2.x,p2.y);
 
 		//saves the buffered image to file (Bobby's code)
 		/*try {

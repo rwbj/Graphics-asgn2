@@ -2,7 +2,7 @@ import java.awt.Point;
 
 public class MyPoint extends Point{
 
-    int x,y;
+    public int x,y;
 
     public MyPoint(){
         super();
