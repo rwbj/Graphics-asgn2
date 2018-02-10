@@ -1,0 +1,17 @@
+x    point class methods
+x        rotate
+x        translate
+x        scale
+    data file
+        get file
+        interprate data (method)
+    Points
+        grouping
+        draw lines
+    repeat
+        timer
+        repeat method (one action or all actions?)
+    move
+        call point mutation method
+        erase
+        redraw (repaint() in timer?)

@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
-class Gui extends JFrame{
+class Gui extends JFrame implements ActionListener{
 
     JPanel p;
 	int mx,my;
@@ -26,8 +26,8 @@ class Gui extends JFrame{
         p2 = new MYJPanel();
 		p2.setLnPts(n1,n2,n3,n4);
 
+		
 		try {
-			//p2.img = ImageIO.read(new File("./bg.png"));
 			p2.img = ImageIO.read(new File("./"+img));
 		} catch (IOException e) {
 			System.out.printf("img open failed\n");
@@ -37,17 +37,23 @@ class Gui extends JFrame{
 
         p2.setSize(p2.img.getWidth(), p2.img.getHeight());
 
+		//p2.setSize(1040,551);
 		this.add(p2);
+		
 
 		tm = new Timer(100,this);
 		tm.setActionCommand("tm");
 		tm.start();
 	}
 
+	int test = 0;
+
 	public void actionPerformed(ActionEvent e){
 		if (e.getActionCommand().compareTo("tm")==0){
-			p2 = new MYJPanel();
-			p2.setLnPts(x1+1,y1+1,x2+1,y2+1);
+			//p2 = new MYJPanel();
+			p2.repaint();
+			p2.setLnPts(x1+test,y1-test,x2-test,y2+test);
+			test+=10;
 		}
 	}
 

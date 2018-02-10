@@ -1,0 +1,54 @@
+CS3841	Computer Graphics			Assignment 2					6pts
+
+2 points for a program which compiles and has the correct structure and methods
+1 point for correctly reading and processing the data file
+1 point each for correct transformation methods
+
+Due: midnight Feb 13th, show it to me in class or email it to me by the deadline to 
+rickjoyce@landmark.edu. If you email it make sure to put both your last name and the 
+string cs3841 in the subject line of the email.
+
+
+TAL
+Triangle Animation Language
+
+Use the Java Point class to hold a vertex, and write three methods:
+
+void rotate(Point p1, double d);  		//rotate the point d radians clockwise about the origin
+void scale (Point p1, double sx, double sy);	//scale the point by factors of sx, sy
+void translate(Point p1, int dx, int dy);		//translate the point by dx, dy
+
+
+Now use these to create the TAL movie player.  Your program will open a data file which 
+contains the 3 starting vertices of a triangle, followed by a series of transformations, 
+1 per line, like this:
+
+1 1 31 2 11 11
+T 3 2
+S 1.1 0.9
+R 0.1
+R 0.1
+
+The first line defines the initial triangle, in this case P1 = (1,1)    P2 = (31,2)   
+and  P3 = (11,11). Draw a line from P1 to P2, another from P2 to P3, and a third from 
+P3 back to P1 to draw the triangle. You can use the drawLine() method from Graphics2D 
+(no need to use your previous code).
+
+Now reading the file line by line: translate all three vertices by 3 in the x direction 
+and 2 in the y direction. Erase the initial triangle and draw the newly translated one. 
+Read another line, this time scale all three vertices by 1.1 in the x direction and by 
+0.9 in the y direction. Erase the previous triangle picture and draw the newly scaled 
+triangle. Continue until end of file. Read and render ten lines per second, where R 
+means rotate, T means translate, and S means scale, thus playing the triangle film.
+
+Use the extended JPanel as you did for the Bresenhem line drawing work, and do the 
+drawing of the triangle in your overridden paintComponent() routine. Use the Java Swing 
+timer to get your 10fps frame rate (call the repaint() method to redraw). 
+
+myNote - Call “paintComponent” 10 time a sec
+
+
+Run your program like this:
+
+Java Tal  triangleMovieFile
+
